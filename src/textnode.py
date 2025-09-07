@@ -11,9 +11,10 @@ class TextType(Enum):
     STRIKETHROUGH = "strikethrough"
     CODE = "code"
     QUOTE = "quote"
-    LIST_ITEM = "list_item"
     ORDERED_LIST_ITEM = "ordered_list_item"
     UNORDERED_LIST_ITEM = "unordered_list_item"
+    TEXT = "text"
+    IMAGE = "image"
 
 class TextNode:
     def __init__(self, text, text_type, url=None):

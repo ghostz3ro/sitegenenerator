@@ -20,7 +20,7 @@ class HtmlNode:
     #     return f'<{self.tag}{attr_str}>{children_str}</{self.tag}>'
     
     def to_html(self):
-        raise NotImplementedError("Not implemented yet")
+        raise NotImplementedError("will be implemented in subclasses")
     
     def props_to_html(self):
         return ' '.join(f'{key}="{value}"' for key, value in self.props.items())
