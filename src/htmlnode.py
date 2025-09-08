@@ -28,3 +28,35 @@ class HtmlNode:
     def __repr__(self):
         return f"HtmlNode(tag={self.tag}, content={self.content}, children={self.children}, props={self.props})"
     
+
+class LeafNode(HtmlNode):
+    def __init__(self, tag=None, content=None, props=None):
+        super().__init__(tag=tag, content=content, props=props)
+
+    def to_html(self):
+        if not self.content:
+            raise ValueError("content must be defined for LeafNode")
+        if self.tag is None:
+            return f'{self.content}'
+        else:
+            return f'<{self.tag}>{self.content}</{self.tag}>'
+
+    def __repr__(self):
+        return f"LeafNode(tag={self.tag}, content={self.content}, props={self.props})"
+    
+
+class ParentNode(HtmlNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(props=props)
+        self.tag = tag
+        self.children = children
+
+    def to_html(self):
+        if self.tag is None:
+            raise ValueError("tag must be defined for ParentNode")
+        if not self.children:
+            raise ValueError("children must be defined for ParentNode")
+        return f"<{self.tag}>" + ''.join(child.to_html() for child in self.children) + f"</{self.tag}>"
+
+    def __repr__(self):
+        return f"ParentNode(tag={self.tag}, children={self.children}, props={self.props})"

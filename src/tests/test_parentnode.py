@@ -1,5 +1,4 @@
-from src.parentnode import ParentNode
-from src.leafnode import LeafNode
+from src.htmlnode import ParentNode, LeafNode
 import unittest
 
 class TestParentNode(unittest.TestCase):
