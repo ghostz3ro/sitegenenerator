@@ -14,7 +14,8 @@ def extract_markdown_links(text):
     Extracts markdown link syntax [link text](url) from the given text.
     Returns a list of tuples (link_text, url).
     """
-    pattern = r'\[([^\]]*)\]\(([^\)]*)\)'
+    # This regex handles URLs with nested parentheses
+    pattern = r'\[([^\]]+)\]\(((?:[^()]+|\([^()]*\))+)\)'
     matches = re.findall(pattern, text)
     return matches
 
