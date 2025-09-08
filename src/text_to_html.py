@@ -1,6 +1,6 @@
-from textnode import TextType
-from htmlnode import HtmlNode
-from leafnode import LeafNode
+from src.textnode import TextType
+from src.htmlnode import HtmlNode
+from src.leafnode import LeafNode
 
 def textnode_to_htmlnode(text_node):
     if text_node.text_type == TextType.ANCHOR:
