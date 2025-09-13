@@ -1,5 +1,5 @@
 from enum import Enum
-from src.htmlnode import HtmlNode, LeafNode
+from htmlnode import HtmlNode, LeafNode
 
 class TextType(Enum):
     ANCHOR = "anchor"
@@ -40,7 +40,7 @@ def textnode_to_htmlnode(text_node):
     if text_node.text_type == TextType.ANCHOR:
         return text_node.text
     elif text_node.text_type == TextType.LINK:
-        return HtmlNode("a", text_node.text, props={"href": text_node.url})
+        return LeafNode("a", text_node.text, props={"href": text_node.url})
     elif text_node.text_type == TextType.BOLD:
         return LeafNode("b", text_node.text)
     elif text_node.text_type == TextType.ITALIC:
@@ -64,6 +64,6 @@ def textnode_to_htmlnode(text_node):
     elif text_node.text_type == TextType.TEXT:
         return LeafNode(content=text_node.text)
     elif text_node.text_type == TextType.IMAGE:
-        return HtmlNode("img", "", {"src": text_node.url, "alt": text_node.text})
+        return LeafNode("img", "", props={"src": text_node.url, "alt": text_node.text})
     else:
         raise ValueError(f"Unknown node type: {text_node.text_type}")

@@ -3,7 +3,7 @@
 class HtmlNode:
     def __init__(self, tag=None, content=None, children=None, props=None):
         self.tag = tag
-        self.content = content if content else {}
+        self.content = content
         self.children = children if children else []
         self.props = props if props else {}
 
@@ -34,12 +34,16 @@ class LeafNode(HtmlNode):
         super().__init__(tag=tag, content=content, props=props)
 
     def to_html(self):
-        if not self.content:
+        if self.content is None:
             raise ValueError("content must be defined for LeafNode")
         if self.tag is None:
             return f'{self.content}'
+        elif self.tag == "img":
+            props_str = f' {self.props_to_html()}' if self.props else ''
+            return f'<{self.tag}{props_str}>'
         else:
-            return f'<{self.tag}>{self.content}</{self.tag}>'
+            props_str = f' {self.props_to_html()}' if self.props else ''
+            return f'<{self.tag}{props_str}>{self.content}</{self.tag}>'
 
     def __repr__(self):
         return f"LeafNode(tag={self.tag}, content={self.content}, props={self.props})"

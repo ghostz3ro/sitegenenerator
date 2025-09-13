@@ -1,8 +1,8 @@
-from src.markdown_to_blocks import markdown_to_blocks
-from src.block_to_block_type import block_to_block_type
-from src.htmlnode import LeafNode, ParentNode
-from src.text_to_textnodes import text_to_textnodes
-from src.textnode import textnode_to_htmlnode
+from markdown_to_blocks import markdown_to_blocks
+from block_to_block_type import block_to_block_type
+from htmlnode import LeafNode, ParentNode
+from text_to_textnodes import text_to_textnodes
+from textnode import textnode_to_htmlnode
 
 def markdown_to_html_node(markdown: str) -> str:
     # Implementation of markdown to HTML conversion
