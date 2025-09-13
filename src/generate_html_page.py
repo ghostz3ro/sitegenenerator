@@ -46,7 +46,7 @@ def generate_page(basepath, from_path, template_path, dest_path):
         f.close()
     return
 
-def generate_pages_recursive(basepath,from_path, template_path, dest_path):
+def generate_pages_recursive(basepath, from_path, template_path, dest_path):
     print(f"Generating pages recursively from {from_path} to {dest_path} using template {template_path}")
     print(f'checking path {from_path}')
     if os.path.exists(from_path):
