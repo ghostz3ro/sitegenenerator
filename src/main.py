@@ -1,6 +1,6 @@
 import os
 import shutil
-from generate_html_page import generate_page
+from generate_html_page import generate_pages_recursive
 
 def copy_to_directory(src, dest):
     
@@ -22,4 +22,4 @@ def copy_to_directory(src, dest):
 
 
 copy_to_directory('static', 'public')
-# generate_page('content/index.md', 'template.html', 'public/index.html')
+generate_pages_recursive('content', 'template.html', 'public')
